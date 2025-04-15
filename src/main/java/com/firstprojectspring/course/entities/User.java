@@ -3,9 +3,19 @@ package com.firstprojectspring.course.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "tb_user")//Renomeamos para n dar conflito, ja que User é uma palavara reservada do banco de dados h2.
 public class User implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
+	@Id //Qual desses campos será a chave primária? id? então: @id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)//para indicar que o ID é numerico
 	private Long id;
 	private String name;
 	private String email;
